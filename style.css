@@ -617,23 +617,133 @@ button {
   padding-top: 80px;
 }
 
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
+.skill-marquee {
   margin-top: 28px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 
-.skill-tags span {
+.skill-track-row {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 9px;
+  animation: skill-scroll 26s linear infinite;
+}
+
+.skill-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 9px;
+  flex: 0 0 auto;
+}
+
+.skill-track span {
+  flex: 0 0 auto;
   padding: 9px 13px;
   border: 1px solid rgba(244, 239, 230, 0.2);
   border-radius: 999px;
   color: var(--cream);
   font-size: 11px;
+  white-space: nowrap;
+}
+
+@keyframes skill-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 4.5px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-track-row {
+    animation: none;
+  }
 }
 
 .work-section {
   border-bottom: 1px solid var(--line);
+}
+
+.work-intro-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 55px;
+}
+
+.work-visual {
+  position: relative;
+  height: 260px;
+  border-radius: 28px;
+  background: var(--sage-light);
+  overflow: hidden;
+}
+
+.work-visual canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.work-group {
+  margin-bottom: 46px;
+}
+
+.work-group-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.work-group-index {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--terracotta);
+}
+
+.work-group-header h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.work-group-header p {
+  margin-left: auto;
+  max-width: 340px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  text-align: right;
+}
+
+.work-group-grid {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .work-intro-row {
+    grid-template-columns: 1fr;
+  }
+
+  .work-visual {
+    height: 200px;
+  }
+
+  .work-group-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .work-group-header p {
+    margin-left: 0;
+    text-align: left;
+    max-width: none;
+  }
 }
 
 .project-grid {
