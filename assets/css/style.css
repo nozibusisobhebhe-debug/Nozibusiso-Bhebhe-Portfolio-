@@ -1047,6 +1047,8 @@ button {
   color: var(--ink-soft);
   font-size: 13px;
   font-style: italic;
+  font-weight: 600;
+  line-height: 1.6;
   text-align: center;
 }
 
